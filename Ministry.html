@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dairikian Ministry of Foreign Affairs</title>
+
+    <style>
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px;
+            border-bottom: 2px solid red;
+        }
+
+        h1 {
+            color: red;
+            font-size: 48px;
+        }
+
+        h2 {
+            color: red;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 30px;
+        }
+
+        .relations {
+            border: 1px solid red;
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+
+        .ally {
+            color: lime;
+        }
+
+        .neutral {
+            color: gray;
+        }
+
+        .enemy {
+            color: crimson;
+        }
+
+        .request-form {
+            border: 1px solid red;
+            padding: 20px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            background-color: #111;
+            color: white;
+            border: 1px solid red;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 2px solid red;
+            margin-top: 50px;
+            color: gray;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Ministry of Foreign Affairs</h1>
+        <p>The Dairikian Empire</p>
+        <p>"War is Peace! Peace is War!"</p>
+    </header>
+
+    <div class="container">
+
+        <section class="relations">
+            <h2>Current Foreign Relations</h2>
+
+            <h3 class="ally">Strategic Allies</h3>
+            <ul>
+                <li>Sovern</li>
+                <li>The Empire of The Rim</li>
+                <li>The Kingdom of Romar</li>
+                <li>Western Vire Bobsur</li>
+            </ul>
+            <h3 class="neutral">Neutral States</h3>
+          <ul>
+            <li>The Qumarian Caliphate</li>
+            <li>Thalygia</li>
+            <li>Kessant</li>
+            <li>Solmire</li>
+            <li>Narenth</li>
+            <li>virell</li>
+            <li>Orvendal</li>
+            <li>Alsburg</li>
+            <li>Ulm</li>
+            <li>The Berliner Republic</li>
+            <li>The Velorian Patriarchate</li>
+            <li>Virllia</li>
+            <li>Kessitri</li>
+            <li>Hadlia</li>
+            <li>Bratia</li>
+            <li>Myrrivphia</li>
+            <li>Varenth</li>
+            <li>Ochio Imperia</li>
+            <li>Krestal</li>
+            <li>Helyra</li>
+            <li>dravos</li>
+            <li>Lumyllphish</li>
+            <li>Solkar</li>
+          </ul>
+            <h3 class="enemy">Hostile Powers</h3>
+        <ul> 
+            <li>The Habsart Dominion</li>
+            <li>Concordia</li>
+            <li>Agis</li>
+            <li>Lijgysk</li>
+            <li>Varkoss</li>
+            <li>The Oracandian Empire</li>
+            <li>The UCC</li>
+        </ul>
+        </section>
+
+        <section class="request-form">
+
+            <h2>Diplomatic Request Form</h2>
+
+            <form action="https://formsubmit.co/jdisinhisimage2@hotmail.com"
+                  method="POST">
+
+                <label>Nation Name</label>
+                <input type="text"
+                       name="nation"
+                       required>
+
+                <label>Region</label>
+                <input type="text"
+                       name="region"
+                       required>
+
+                <label>Request Type</label>
+                <select name="request_type">
+
+                    <option>Embassy Exchange</option>
+                    <option>Military Pact</option>
+                    <option>Trade Agreement</option>
+                    <option>Non-Aggression Pact</option>
+                    <option>State Visit</option>
+                    <option>Other</option>
+
+                </select>
+
+                <label>Message</label>
+                <textarea name="message"
+                          rows="8"
+                          required></textarea>
+
+                <button type="submit">
+                    Submit Diplomatic Request
+                </button>
+
+            </form>
+
+        </section>
+
+    </div>
+
+    <footer>
+        Official Communications Portal of the Dairikian Empire
+    </footer>
+
+</body>
+</html>
