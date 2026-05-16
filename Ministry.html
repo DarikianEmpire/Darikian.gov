@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Dairikian Ministry of Foreign Affairs</title>
 
     <style>
@@ -24,22 +26,52 @@
         h1 {
             color: red;
             font-size: 48px;
+            margin-bottom: 10px;
         }
 
         h2 {
             color: red;
         }
 
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: red;
+            margin: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
         .container {
-            width: 80%;
+            width: 85%;
             margin: auto;
             padding: 30px;
         }
 
         .relations {
             border: 1px solid red;
-            padding: 20px;
+            padding: 25px;
             margin-bottom: 40px;
+            background-color: #080808;
+        }
+
+        .relation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .relation-box {
+            border: 1px solid #222;
+            padding: 15px;
+            background-color: #111;
         }
 
         .ally {
@@ -54,12 +86,23 @@
             color: crimson;
         }
 
-        .request-form {
-            border: 1px solid red;
-            padding: 20px;
+        ul {
+            padding-left: 20px;
         }
 
-        input, textarea, select {
+        li {
+            margin-bottom: 6px;
+        }
+
+        .request-form {
+            border: 1px solid red;
+            padding: 25px;
+            background-color: #080808;
+        }
+
+        input,
+        textarea,
+        select {
             width: 100%;
             background-color: #111;
             color: white;
@@ -67,6 +110,7 @@
             padding: 10px;
             margin-top: 10px;
             margin-bottom: 20px;
+            box-sizing: border-box;
         }
 
         button {
@@ -76,10 +120,19 @@
             padding: 12px 24px;
             font-size: 16px;
             cursor: pointer;
+            transition: 0.2s;
         }
 
         button:hover {
             background-color: darkred;
+        }
+
+        .notice {
+            border: 1px solid #333;
+            padding: 15px;
+            margin-bottom: 30px;
+            background-color: #111;
+            color: #cccccc;
         }
 
         footer {
@@ -91,64 +144,106 @@
         }
 
     </style>
+
 </head>
 
 <body>
 
     <header>
+
         <h1>Ministry of Foreign Affairs</h1>
-        <p>The Dairikian Empire</p>
+
+        <p><strong>The Dairikian Empire</strong></p>
+
         <p>"War is Peace! Peace is War!"</p>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="map.html">Oracandia Map</a>
+            <a href="ministry.html">Foreign Affairs</a>
+        </nav>
+
     </header>
 
     <div class="container">
 
+        <div class="notice">
+            Foreign diplomatic communications are monitored by the Central Administrative Directorate.
+            Unauthorized interference with imperial communications may result in sanctions.
+        </div>
+
         <section class="relations">
+
             <h2>Current Foreign Relations</h2>
 
-            <h3 class="ally">Strategic Allies</h3>
-            <ul>
-                <li>Sovern</li>
-                <li>The Empire of The Rim</li>
-                <li>The Kingdom of Romar</li>
-                <li>Western Vire Bobsur</li>
-            </ul>
-            <h3 class="neutral">Neutral States</h3>
-          <ul>
-            <li>The Qumarian Caliphate</li>
-            <li>Thalygia</li>
-            <li>Kessant</li>
-            <li>Solmire</li>
-            <li>Narenth</li>
-            <li>virell</li>
-            <li>Orvendal</li>
-            <li>Alsburg</li>
-            <li>Ulm</li>
-            <li>The Berliner Republic</li>
-            <li>The Velorian Patriarchate</li>
-            <li>Virllia</li>
-            <li>Kessitri</li>
-            <li>Hadlia</li>
-            <li>Bratia</li>
-            <li>Myrrivphia</li>
-            <li>Varenth</li>
-            <li>Ochio Imperia</li>
-            <li>Krestal</li>
-            <li>Helyra</li>
-            <li>dravos</li>
-            <li>Lumyllphish</li>
-            <li>Solkar</li>
-          </ul>
-            <h3 class="enemy">Hostile Powers</h3>
-        <ul> 
-            <li>The Habsart Dominion</li>
-            <li>Concordia</li>
-            <li>Agis</li>
-            <li>Lijgysk</li>
-            <li>Varkoss</li>
-            <li>The Oracandian Empire</li>
-            <li>The UCC</li>
-        </ul>
+            <div class="relation-grid">
+
+                <!-- ALLIES -->
+                <div class="relation-box">
+
+                    <h3 class="ally">Strategic Allies</h3>
+
+                    <ul>
+                        <li>Sovern</li>
+                        <li>The Empire of the Rim</li>
+                        <li>The Kingdom of Romar</li>
+                        <li>Western Vire Bobsur</li>
+                    </ul>
+
+                </div>
+
+                <!-- NEUTRALS -->
+                <div class="relation-box">
+
+                    <h3 class="neutral">Neutral States</h3>
+
+                    <ul>
+                        <li>The Qumarian Caliphate</li>
+                        <li>Thalygia</li>
+                        <li>Kessant</li>
+                        <li>Solmire</li>
+                        <li>Narenth</li>
+                        <li>Virell</li>
+                        <li>Orvendal</li>
+                        <li>Alsburg</li>
+                        <li>Ulm</li>
+                        <li>The Berliner Republic</li>
+                        <li>The Velorian Patriarchate</li>
+                        <li>Virllia</li>
+                        <li>Kessitri</li>
+                        <li>Hadlia</li>
+                        <li>Bratia</li>
+                        <li>Myrrivphia</li>
+                        <li>Varenth</li>
+                        <li>Ochio Imperia</li>
+                        <li>Krestal</li>
+                        <li>Helyra</li>
+                        <li>Dravos</li>
+                        <li>Lumyllphish</li>
+                        <li>Solkar</li>
+                    </ul>
+
+                </div>
+
+                <!-- ENEMIES -->
+                <div class="relation-box">
+
+                    <h3 class="enemy">Hostile Powers</h3>
+
+                    <ul>
+                        <li>The Habsart Dominion</li>
+                        <li>Concordia</li>
+                        <li>Agis</li>
+                        <li>Lijgysk</li>
+                        <li>Varkoss</li>
+                        <li>The Oracandian Empire</li>
+                        <li>The UCC</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
         </section>
 
         <section class="request-form">
@@ -159,16 +254,35 @@
                   method="POST">
 
                 <label>Nation Name</label>
+
                 <input type="text"
                        name="nation"
+                       placeholder="Enter your nation name"
                        required>
 
                 <label>Region</label>
+
                 <input type="text"
                        name="region"
+                       placeholder="Enter your region"
                        required>
 
+                <label>Government Type</label>
+
+                <select name="government_type">
+
+                    <option>Democracy</option>
+                    <option>Monarchy</option>
+                    <option>Military Government</option>
+                    <option>Theocracy</option>
+                    <option>Communist State</option>
+                    <option>Imperial State</option>
+                    <option>Other</option>
+
+                </select>
+
                 <label>Request Type</label>
+
                 <select name="request_type">
 
                     <option>Embassy Exchange</option>
@@ -176,13 +290,28 @@
                     <option>Trade Agreement</option>
                     <option>Non-Aggression Pact</option>
                     <option>State Visit</option>
+                    <option>Intelligence Cooperation</option>
+                    <option>Request for Recognition</option>
                     <option>Other</option>
 
                 </select>
 
+                <label>Priority Level</label>
+
+                <select name="priority">
+
+                    <option>Low Priority</option>
+                    <option>Standard Priority</option>
+                    <option>High Priority</option>
+                    <option>Emergency Communication</option>
+
+                </select>
+
                 <label>Message</label>
+
                 <textarea name="message"
                           rows="8"
+                          placeholder="Enter your diplomatic message..."
                           required></textarea>
 
                 <button type="submit">
