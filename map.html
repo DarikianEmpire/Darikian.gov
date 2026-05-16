@@ -224,31 +224,6 @@
 const data = {
 
     core: {
-        "The Oracandian Empire": "A virtually nonexistent state with little real authority. The empire exists in constant chaos due to criminal organizations holding more power than the central government on New Terra. This was the first human state established after migrants departed the Milky Way and created humanity's first foothold in Oracandia. The empire later collapsed following massive ethnic, religious, and political violence, causing many populations to flee into the wider galaxy."
-    },
-
-    sector1: {
-
-        "Alsburg": "A monarchist state and vassal of Ulm.",
-        "The Qumarian Caliphate": "A theocratic Islamic state established after a mass exodus of Sunni Muslims fled the Oracandian Empire.",
-        "The Velorian Patriarchate": "A theocratic Orthodox Christian state established after Queen Savpia eliminated an alien presence in Veloria.",
-        "Virllia": "Information has not yet been added."
-
-    },
-
-    sector2: {
-
-        "Ulm": "Overlord of Alsburg and the dominant power of Sector 2.",
-        "Hadlia": "Information has not yet been added.",
-        "Bratia": "Information has not yet been added.",
-        "Kessitri": "Information has not yet been added.",
-        "Myrrivphia": "Information has not yet been added."
-
-    },
-
-    sector3: {
-
-        core: {
         "The Oracandian Empire":
         "A virtualy non existant state with no real authority, it is in constant cahos do to the various crimianal organizations haveing way more athority then the cental government on new terra. This was the first state set up after human migrants departed the Milky Way establishing the first foot hold in Oracandia for humans. It collapsed after massive amounts of ethnic, religous and political violence took place causeing many to depart the core to other parts of the galaxy."
     },
@@ -266,7 +241,6 @@ const data = {
 
         "Virllia":
         "Info not added, if wanted request in the request drop down."
-
     },
 
     sector2: {
@@ -285,7 +259,6 @@ const data = {
 
         "Myrrivphia":
         "Info not added, if wanted request in the request drop down."
-
     },
 
     sector3: {
@@ -307,14 +280,12 @@ const data = {
 
         "Krestal":
         "An Authoritarian Communist state and puppet of Sovern, has had several border conflicts Ochio Imperia and tensions haave been riseing in sector 3 between the communist and facist bloc in the region. Info not fully added, if wanted request in the request drop down."
-
     },
 
     sector4: {
 
         "Sovern":
         "The Origional Communist state in oracandia, and ally of the Darikian empire, It spread communism into sector 3 do prevent the area from falling under fasist hands. they are made of 15 member republics with the largest and most powerful being Sovern. Info not fully added, if wanted request in the request drop down."
-
     },
 
     sector5: {
@@ -327,7 +298,6 @@ const data = {
 
         "Empire of the Rim":
         "Devorist State, puppet of the Darikian empire, formed after the darikian civilwar from darikian remenatants. Info not fully added, if wanted request in the request drop down."
-
     },
 
     sector6: {
@@ -358,79 +328,33 @@ const data = {
 
         "Thalygia":
         "Info not added, if wanted request in the request drop down."
-
-
-    },
-
-    sector6: {
-
-        "Concordia":
-        "A monarchist hyper-militarist state and member of the Galactic Accord.",
-
-        "Agis":
-        "A monarchist state and member of the Galactic Accord.",
-
-        "Habsart":
-        "A monarchist state and leading power within the Galactic Accord.",
-
-        "Kessant":
-        "Information has not yet been added.",
-
-        "Orvendal":
-        "Information has not yet been added.",
-
-        "Virell":
-        "Information has not yet been added.",
-
-        "Solmire":
-        "Information has not yet been added.",
-
-        "Narenth":
-        "Information has not yet been added.",
-
-        "Thalygia":
-        "Information has not yet been added."
-
     }
 
 };
 
 function loadSector() {
 
-    const sector =
-        document.getElementById("sectorSelect").value;
-
-    const list =
-        document.getElementById("countryList");
-
-    const details =
-        document.getElementById("details");
+    const sector = document.getElementById("sectorSelect").value;
+    const list = document.getElementById("countryList");
+    const details = document.getElementById("details");
 
     list.innerHTML = "";
 
     for (const country in data[sector]) {
 
-        const div =
-            document.createElement("div");
-
+        const div = document.createElement("div");
         div.className = "country";
-
         div.innerText = country;
 
         div.onclick = function () {
-
             details.innerText =
                 country + "\n\n" + data[sector][country];
-
         };
 
         list.appendChild(div);
-
     }
 
-    details.innerText =
-        "Select a country to view details.";
-
+    details.innerText = "Select a country to view details.";
 }
 
 window.onload = loadSector;
