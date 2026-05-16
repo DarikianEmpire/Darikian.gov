@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Oracandia Map</title>
+
+<style>
+
+    body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        padding: 30px;
+        border-bottom: 2px solid red;
+    }
+
+    h1 {
+        color: red;
+    }
+
+    select {
+        padding: 10px;
+        margin-top: 20px;
+        background: #111;
+        color: white;
+        border: 1px solid red;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-around;
+        padding: 30px;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .panel {
+        width: 40%;
+        border: 1px solid red;
+        padding: 20px;
+        min-height: 300px;
+        background-color: #080808;
+    }
+
+    .country {
+        cursor: pointer;
+        padding: 8px;
+        margin: 5px;
+        border: 1px solid #333;
+        transition: 0.2s;
+    }
+
+    .country:hover {
+        background: red;
+    }
+
+    .details {
+        text-align: left;
+        white-space: pre-wrap;
+    }
+
+    nav a {
+        color: red;
+        margin: 10px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        color: white;
+    }
+
+    .request-box {
+        margin-top: 20px;
+        border-top: 1px solid red;
+        padding-top: 20px;
+    }
+
+    input, textarea {
+        width: 100%;
+        background: #111;
+        color: white;
+        border: 1px solid red;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background: red;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: darkred;
+    }
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>Oracandia Map</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ministry.html">Ministry</a>
+        <a href="map.html">Map</a>
+    </nav>
+
+    <select id="sectorSelect" onchange="loadSector()">
+        <option value="core">Core of Oracandia</option>
+        <option value="sector1">Sector 1</option>
+        <option value="sector2">Sector 2</option>
+        <option value="sector3">Sector 3</option>
+        <option value="sector4">Sector 4</option>
+        <option value="sector5">Sector 5</option>
+        <option value="sector6">Sector 6</option>
+    </select>
+
+</header>
+
+<div class="container">
+
+    <!-- COUNTRY LIST -->
+    <div class="panel">
+
+        <h2>Countries</h2>
+
+        <div id="countryList"></div>
+
+    </div>
+
+    <!-- DETAILS PANEL -->
+    <div class="panel">
+
+        <h2>Information</h2>
+
+        <div id="details" class="details">
+            Select a country to view details.
+        </div>
+
+        <!-- REQUEST FORM -->
+        <div class="request-box">
+
+            <h2>Request Additional Information</h2>
+
+            <form action="https://formsubmit.co/YOUR_EMAIL_HERE"
+                  method="POST">
+
+                <select name="requested_nation" required>
+
+                    <option value="">Select a Nation</option>
+
+                    <option>The Oracandian Empire</option>
+                    <option>Alsburg</option>
+                    <option>The Qumarian Caliphate</option>
+                    <option>The Velorian Patriarchate</option>
+                    <option>Virllia</option>
+                    <option>Ulm</option>
+                    <option>Hadlia</option>
+                    <option>Bratia</option>
+                    <option>Kessitri</option>
+                    <option>Myrrivphia</option>
+                    <option>Ochio Imperia</option>
+                    <option>Dravos</option>
+                    <option>Varkoss</option>
+                    <option>Varenth</option>
+                    <option>Solkar</option>
+                    <option>Krestal</option>
+                    <option>Sovern</option>
+                    <option>Darikian Empire</option>
+                    <option>Lijgysk</option>
+                    <option>Empire of the Rim</option>
+                    <option>Concordia</option>
+                    <option>Agis</option>
+                    <option>Habsart</option>
+                    <option>Kessant</option>
+                    <option>Orvendal</option>
+                    <option>Virell</option>
+                    <option>Solmire</option>
+                    <option>Narenth</option>
+                    <option>Thalygia</option>
+
+                </select>
+
+                <input type="text"
+                       name="nation_name"
+                       placeholder="Your Nation Name"
+                       required>
+
+                <textarea name="reason"
+                          rows="5"
+                          placeholder="Why are you requesting additional information?"
+                          required></textarea>
+
+                <button type="submit">
+                    Submit Request
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const data = {
+
+    core: {
+        "The Oracandian Empire":
+        "A virtually nonexistent state with little real authority. The empire exists in constant chaos due to criminal organizations holding more power than the central government on New Terra. This was the first human state established after migrants departed the Milky Way and created humanity's first foothold in Oracandia. The empire later collapsed following massive ethnic, religious, and political violence, causing many populations to flee into the wider galaxy."
+    },
+
+    sector1: {
+
+        "Alsburg":
+        "A monarchist state and vassal of Ulm. It was established after the Great Qumarian War to secure trade routes into the Galactic Accord and protect the ethnic Germans of the region from religious persecution. The name Alsburg originates from an ancient town in southern Germany.",
+
+        "The Qumarian Caliphate":
+        "A theocratic Islamic state established after a mass exodus of Sunni Muslims fled the Oracandian Empire due to religious persecution. They lost the Great Qumarian War, which began as a local conflict between Qumar and Veloria before Ulm and the Galactic Accord intervened in support of Veloria.",
+
+        "The Velorian Patriarchate":
+        "A theocratic Orthodox Christian state established after Queen Savpia eliminated an alien presence in modern-day Veloria. She conquered neighboring alien territories and converted much of the population to Orthodoxy. Human migrants later entered the state after Qumar restricted religious freedom.",
+
+        "Virllia":
+        "Information has not yet been added. Additional details may be requested through the information request system."
+
+    },
+
+    sector2: {
+
+        "Ulm":
+        "Overlord of Alsburg. The state was formed by German and Catholic migrants entering Sector 2 and has since cemented itself as the region's dominant power.",
+
+        "Hadlia":
+        "Information has not yet been added. Additional details may be requested through the information request system.",
+
+        "Bratia":
+        "Information has not yet been added. Additional details may be requested through the information request system.",
+
+        "Kessitri":
+        "Information has not yet been added. Additional details may be requested through the information request system.",
+
+        "Myrrivphia":
+        "Information has not yet been added. Additional details may be requested through the information request system."
+
+    },
+
+    sector3: {
+
+        "Ochio Imperia":
+        "A fascist state formed after extremists fled the Galactic Core. The nation remains in constant border skirmishes with neighboring communist powers and has spread its ideology throughout Sector 3.",
+
+        "Dravos":
+        "A fascist state formed after the NSV seized power in the former Kingdom of Varkoss. Alien populations fearing persecution broke away and established the state of Dravos.",
+
+        "Varkoss":
+        "A National Socialist state that was originally a monarchy. After defeat by Lumyllphish forces, the monarchy collapsed into a temporary democracy before radical nationalists seized control.",
+
+        "Varenth":
+        "A fascist puppet state of Ochio Imperia. Information has not yet been fully added.",
+
+        "Solkar":
+        "A fascist frontier state located near the galactic rim. Information has not yet been fully added.",
+
+        "Krestal":
+        "An authoritarian communist state and puppet of Sovern. Multiple border conflicts with Ochio Imperia have caused tensions between the communist and fascist blocs in Sector 3."
+
+    },
+
+    sector4: {
+
+        "Sovern":
+        "The original communist state in Oracandia and an ally of the Darikian Empire. It spread communism into Sector 3 to prevent fascist expansion. The nation is composed of 15 member republics."
+
+    },
+
+    sector5: {
+
+        "Darikian Empire":
+        "The original Devorist state. Most information regarding the empire is available within the History section.",
+
+        "Lijgysk":
+        "A semi-democratic military dictatorship and enemy of the Darikian Empire, formed following the Darikian Civil War.",
+
+        "Empire of the Rim":
+        "A Devorist puppet state of the Darikian Empire, formed from surviving loyalist remnants after the civil war."
+
+    },
+
+    sector6: {
+
+        "Concordia":
+        "A monarchist hyper-militarist state and member of the Galactic Accord.",
+
+        "Agis":
+        "A monarchist state and member of the Galactic Accord.",
+
+        "Habsart":
+        "A monarchist state and leading power within the Galactic Accord.",
+
+        "Kessant":
+        "Information has not yet been added. Additional details may be requested through the information request system.",
+
+        "Orvendal":
+        "Information has not yet been added. Additional details may be requested through the information request system.",
+
+        "Virell":
+        "Information has not yet been added. Additional details may be requested through the information request system.",
+
+        "Solmire":
+        "Information has not yet been added. Additional details may be requested through the information request system.",
+
+        "Narenth":
+        "Information has not yet been added. Additional details may be requested through the information request system.",
+
+        "Thalygia":
+        "Information has not yet been added. Additional details may be requested through the information request system."
+
+    }
+
+};
+
+function loadSector() {
+
+    const sector = document.getElementById("sectorSelect").value;
+    const list = document.getElementById("countryList");
+
+    list.innerHTML = "";
+
+    for (let country in data[sector]) {
+
+        const div = document.createElement("div");
+
+        div.className = "country";
+
+        div.innerText = country;
+
+        div.onclick = () => {
+
+            document.getElementById("details").innerText =
+                country + "\n\n" + data[sector][country];
+
+        };
+
+        list.appendChild(div);
+
+    }
+
+    document.getElementById("details").innerText =
+        "Select a country to view details.";
+
+}
+
+loadSector();
