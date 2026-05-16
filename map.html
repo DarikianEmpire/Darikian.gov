@@ -5,113 +5,130 @@
 <title>Oracandia Map</title>
 
 <style>
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
 
-    body {
-        background-color: black;
-        color: white;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-    }
+header {
+    padding: 30px;
+    border-bottom: 2px solid red;
+}
 
-    header {
-        padding: 30px;
-        border-bottom: 2px solid red;
-    }
+h1 {
+    color: red;
+}
 
-    h1 {
-        color: red;
-    }
+nav a {
+    color: red;
+    margin: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-    select {
-        padding: 10px;
-        margin-top: 20px;
-        background: #111;
-        color: white;
-        border: 1px solid red;
-    }
+nav a:hover {
+    color: white;
+}
 
-    .container {
-        display: flex;
-        justify-content: space-around;
-        padding: 30px;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
+.container {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
-    .panel {
-        width: 40%;
-        border: 1px solid red;
-        padding: 20px;
-        min-height: 300px;
-        background-color: #080808;
-    }
+.map-panel {
+    width: 55%;
+    border: 1px solid red;
+    padding: 20px;
+    background-color: #080808;
+}
 
-    .country {
-        cursor: pointer;
-        padding: 8px;
-        margin: 5px;
-        border: 1px solid #333;
-        transition: 0.2s;
-    }
+.info-panel {
+    width: 35%;
+    border: 1px solid red;
+    padding: 20px;
+    min-height: 300px;
+    background-color: #080808;
+}
 
-    .country:hover {
-        background: red;
-    }
+.map-wrapper {
+    position: relative;
+    width: 100%;
+}
 
-    .details {
-        text-align: left;
-        white-space: pre-wrap;
-    }
+.map-img {
+    width: 100%;
+    display: block;
+}
 
-    nav a {
-        color: red;
-        margin: 10px;
-        text-decoration: none;
-        font-weight: bold;
-    }
+.map-country {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background: rgba(255, 0, 0, 0.05);
+    cursor: pointer;
+}
 
-    nav a:hover {
-        color: white;
-    }
+.map-country:hover {
+    background: rgba(255, 0, 0, 0.4);
+    border-color: red;
+}
 
-    .request-box {
-        margin-top: 20px;
-        border-top: 1px solid red;
-        padding-top: 20px;
-    }
+.details {
+    text-align: left;
+    white-space: pre-wrap;
+}
 
-    input, textarea {
+.request-box {
+    margin-top: 20px;
+    border-top: 1px solid red;
+    padding-top: 20px;
+}
+
+input, textarea, select {
+    width: 100%;
+    background: #111;
+    color: white;
+    border: 1px solid red;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: darkred;
+}
+
+@media (max-width: 900px) {
+    .map-panel,
+    .info-panel {
         width: 100%;
-        background: #111;
-        color: white;
-        border: 1px solid red;
-        padding: 10px;
-        margin-top: 10px;
-        margin-bottom: 15px;
-        box-sizing: border-box;
     }
-
-    button {
-        background: red;
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background: darkred;
-    }
-
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
     <h1>Oracandia Map</h1>
 
     <nav>
@@ -119,51 +136,66 @@
         <a href="ministry.html">Foreign Affairs</a>
         <a href="map.html">Map</a>
     </nav>
-
-    <select id="sectorSelect" onchange="loadSector()">
-        <option value="core">Core of Oracandia</option>
-        <option value="sector1">Sector 1</option>
-        <option value="sector2">Sector 2</option>
-        <option value="sector3">Sector 3</option>
-        <option value="sector4">Sector 4</option>
-        <option value="sector5">Sector 5</option>
-        <option value="sector6">Sector 6</option>
-    </select>
-
 </header>
 
 <div class="container">
 
-    <!-- COUNTRY LIST -->
-    <div class="panel">
+    <div class="map-panel">
+        <h2>Click a Country</h2>
 
-        <h2>Countries</h2>
+        <div class="map-wrapper">
+            <img src="map of Oracandia.png" class="map-img" alt="Map of Oracandia">
 
-        <div id="countryList"></div>
+            <button class="map-country" style="left:49%; top:52%;" onclick="showCountry('The Oracandian Empire')"></button>
+            <button class="map-country" style="left:61%; top:49%;" onclick="showCountry('Alsburg')"></button>
+            <button class="map-country" style="left:73%; top:40%;" onclick="showCountry('The Qumarian Caliphate')"></button>
+            <button class="map-country" style="left:81%; top:29%;" onclick="showCountry('The Velorian Patriarchate')"></button>
+            <button class="map-country" style="left:62%; top:13%;" onclick="showCountry('Virllia')"></button>
 
+            <button class="map-country" style="left:57%; top:38%;" onclick="showCountry('Ulm')"></button>
+            <button class="map-country" style="left:56%; top:28%;" onclick="showCountry('Hadlia')"></button>
+            <button class="map-country" style="left:50%; top:29%;" onclick="showCountry('Bratia')"></button>
+            <button class="map-country" style="left:46%; top:17%;" onclick="showCountry('Kessitri')"></button>
+            <button class="map-country" style="left:34%; top:22%;" onclick="showCountry('Myrrivphia')"></button>
+
+            <button class="map-country" style="left:44%; top:41%;" onclick="showCountry('Ochio Imperia')"></button>
+            <button class="map-country" style="left:26%; top:34%;" onclick="showCountry('Dravos')"></button>
+            <button class="map-country" style="left:14%; top:42%;" onclick="showCountry('Varkoss')"></button>
+            <button class="map-country" style="left:39%; top:32%;" onclick="showCountry('Varenth')"></button>
+            <button class="map-country" style="left:13%; top:53%;" onclick="showCountry('Solkar')"></button>
+            <button class="map-country" style="left:35%; top:40%;" onclick="showCountry('Krestal')"></button>
+
+            <button class="map-country" style="left:29%; top:59%;" onclick="showCountry('Sovern')"></button>
+
+            <button class="map-country" style="left:45%; top:67%;" onclick="showCountry('Darikian Empire')"></button>
+            <button class="map-country" style="left:57%; top:81%;" onclick="showCountry('Lijgysk')"></button>
+            <button class="map-country" style="left:71%; top:80%;" onclick="showCountry('Empire of the Rim')"></button>
+
+            <button class="map-country" style="left:73%; top:68%;" onclick="showCountry('Concordia')"></button>
+            <button class="map-country" style="left:55%; top:60%;" onclick="showCountry('Agis')"></button>
+            <button class="map-country" style="left:81%; top:58%;" onclick="showCountry('Habsart')"></button>
+            <button class="map-country" style="left:63%; top:56%;" onclick="showCountry('Kessant')"></button>
+            <button class="map-country" style="left:69%; top:61%;" onclick="showCountry('Orvendal')"></button>
+            <button class="map-country" style="left:65%; top:63%;" onclick="showCountry('Virell')"></button>
+            <button class="map-country" style="left:58%; top:63%;" onclick="showCountry('Solmire')"></button>
+            <button class="map-country" style="left:60%; top:67%;" onclick="showCountry('Narenth')"></button>
+            <button class="map-country" style="left:89%; top:50%;" onclick="showCountry('Thalygia')"></button>
+        </div>
     </div>
 
-    <!-- DETAILS PANEL -->
-    <div class="panel">
-
+    <div class="info-panel">
         <h2>Information</h2>
 
         <div id="details" class="details">
-            Select a country to view details.
+            Click a country on the map to view details.
         </div>
 
-        <!-- REQUEST FORM -->
         <div class="request-box">
-
             <h2>Request Additional Information</h2>
 
-            <form action="https://formsubmit.co/YOUR_EMAIL_HERE"
-                  method="POST">
-
+            <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
                 <select name="requested_nation" required>
-
                     <option value="">Select a Nation</option>
-
                     <option>The Oracandian Empire</option>
                     <option>Alsburg</option>
                     <option>The Qumarian Caliphate</option>
@@ -194,165 +226,74 @@
                     <option>Narenth</option>
                     <option>Thalygia</option>
                     <option>Any state in the galactic accord</option>
-
                 </select>
 
-                <input type="text"
-                       name="nation_name"
-                       placeholder="Your Nation Name"
-                       required>
+                <input type="text" name="nation_name" placeholder="Your Nation Name" required>
 
-                <textarea name="reason"
-                          rows="5"
-                          placeholder="Why are you requesting additional information?"
-                          required></textarea>
+                <textarea name="reason" rows="5" placeholder="Why are you requesting additional information?" required></textarea>
 
-                <button type="submit">
-                    Submit Request
-                </button>
-
+                <button type="submit">Submit Request</button>
             </form>
-
         </div>
-
     </div>
 
 </div>
 
 <script>
-
 const data = {
+    "The Oracandian Empire": "A virtually nonexistent state with no real authority, it is in constant chaos due to the various criminal organizations having way more authority than the central government on New Terra. This was the first state set up after human migrants departed the Milky Way, establishing the first foothold in Oracandia for humans. It collapsed after massive amounts of ethnic, religious, and political violence took place, causing many to depart the core to other parts of the galaxy.",
 
-    core: {
-        "The Oracandian Empire":
-        "A virtually nonexistent state with no real authority, it is in constant chaos due to the various criminal organizations having way more authority than the central government on New Terra. This was the first state set up after human migrants departed the Milky Way, establishing the first foothold in Oracandia for humans. It collapsed after massive amounts of ethnic, religious, and political violence took place, causing many to depart the core to other parts of the galaxy."
-    },
+    "Alsburg": "A monarchist state, and vassal of Ulm, established after the Great Qumarian War in order for Ulm to have trade routes to the Galactic Accord and to protect the ethnic Germans of the region from religious persecution. The name Alsburg comes from an ancient Earth town in southern Germany.",
 
-    sector1: {
+    "The Qumarian Caliphate": "A theocratic Islamic state, established after a mass exodus of Sunni Muslims fled the Oracandian Empire due to religious persecution. They lost the Great Qumarian War, which originally was a local conflict between Qumar and Veloria. However, Ulm and the Galactic Accord intervened quickly, turning the balance of power in favor of Veloria and allowing them to win.",
 
-        "Alsburg":
-        "A monarchist state, and vassal of Ulm, established after the Great Qumarian War in order for Ulm to have trade routes to the Galactic Accord and to protect the ethnic Germans of the region from religious persecution. The name Alsburg comes from an ancient Earth town in southern Germany.",
+    "The Velorian Patriarchate": "A theocratic Orthodox Christian state, established after Queen Savpia ended an alien presence on modern-day Velor, establishing the state. She quickly conquered the alien states to the north and converted the remaining aliens to Orthodoxy. Human migrants entered the state after Qumar banned religious freedom, forcing Orthodox and Catholics to flee. They cemented their power after the Great Qumar War.",
 
-        "The Qumarian Caliphate":
-        "A theocratic Islamic state, established after a mass exodus of Sunni Muslims fled the Oracandian Empire due to religious persecution. They lost the Great Qumarian War, which originally was a local conflict between Qumar and Veloria. However, Ulm and the Galactic Accord intervened quickly, turning the balance of power in favor of Veloria and allowing them to win.",
+    "Virllia": "Info not added, if wanted request in the request drop down.",
 
-        "The Velorian Patriarchate":
-        "A theocratic Orthodox Christian state, established after Queen Savpia ended an alien presence on modern-day Velor, establishing the state. She quickly conquered the alien states to the north and converted the remaining aliens to Orthodoxy. Human migrants entered the state after Qumar banned religious freedom, forcing Orthodox and Catholics to flee. They cemented their power after the Great Qumar War.",
+    "Ulm": "Overlord of Alsburg, this state was formed from German and Catholic migrants into Sector 2. It has cemented its power as Sector 2's definitive power.",
 
-        "Virllia":
-        "Info not added, if wanted request in the request drop down."
-    },
+    "Hadlia": "Info not added, if wanted request in the request drop down.",
+    "Bratia": "Info not added, if wanted request in the request drop down.",
+    "Kessitri": "Info not added, if wanted request in the request drop down.",
+    "Myrrivphia": "Info not added, if wanted request in the request drop down.",
 
-    sector2: {
+    "Ochio Imperia": "Fascist state formed after fascists fled the Galactic Core. They are constantly in border skirmishes with their communist neighbors and have spread their ideology across Sector 3.",
 
-        "Ulm":
-        "Overlord of Alsburg, this state was formed from German and Catholic migrants into Sector 2. It has cemented its power as Sector 2's definitive power.",
+    "Dravos": "A fascist state formed after an election in Varkoss resulted in the NSV taking power in the old Kingdom of Varkoss. The aliens, fearing for their lives, broke free, creating the state of Dravos.",
 
-        "Hadlia":
-        "Info not added, if wanted request in the request drop down.",
+    "Varkoss": "National Socialist state, originally a monarchy. After a defeat to Lumyllphish, the monarchy collapsed into a temporary democracy; however, radicalization of the Varks caused the National Socialists to take power. This horribly evil state has been condemned by every state in Oracandia; however, due to regional power dynamics, they exist as the communists and fascists do not want to give the other more power, so they exist unstable, economically and politically isolated, and politically extreme.",
 
-        "Bratia":
-        "Info not added, if wanted request in the request drop down.",
+    "Varenth": "A fascist state and puppet of Ochio Imperia. Info not fully added, if wanted request in the request drop down.",
+    "Solkar": "A fascist state and frontier into the rim of the galaxy. Info not fully added, if wanted request in the request drop down.",
+    "Krestal": "An authoritarian communist state and puppet of Sovern, has had several border conflicts with Ochio Imperia, and tensions have been rising in Sector 3 between the communist and fascist bloc in the region. Info not fully added, if wanted request in the request drop down.",
 
-        "Kessitri":
-        "Info not added, if wanted request in the request drop down.",
+    "Sovern": "The original communist state in Oracandia, and ally of the Darikian Empire. It spread communism into Sector 3 to prevent the area from falling under fascist hands. They are made of 15 member republics, with the largest and most powerful being Sovern. Info not fully added, if wanted request in the request drop down.",
 
-        "Myrrivphia":
-        "Info not added, if wanted request in the request drop down."
-    },
+    "Darikian Empire": "The original Devorist state. Info not fully added, if wanted request in the request drop down. Most info will be in the History tab.",
 
-    sector3: {
+    "Lijgysk": "A semi-democratic military dictatorship, enemy of the Darikian Empire, formed after the Darikian Civil War. Info not fully added, if wanted request in the request drop down.",
 
-        "Ochio Imperia":
-        "Fascist state formed after fascists fled the Galactic Core. They are constantly in border skirmishes with their communist neighbors and have spread their ideology across Sector 3.",
+    "Empire of the Rim": "Devorist state, puppet of the Darikian Empire, formed after the Darikian Civil War from Darikian remnants. Info not fully added, if wanted request in the request drop down.",
 
-        "Dravos":
-        "A fascist state formed after an election in Varkoss resulted in the NSV taking power in the old Kingdom of Varkoss. The aliens, fearing for their lives, broke free, creating the state of Dravos.",
-
-        "Varkoss":
-        "National Socialist state, originally a monarchy. After a defeat to Lumyllphish, the monarchy collapsed into a temporary democracy; however, radicalization of the Varks caused the National Socialists to take power. This horribly evil state has been condemned by every state in Oracandia; however, due to regional power dynamics, they exist as the communists and fascists do not want to give the other more power, so they exist unstable, economically and politically isolated, and politically extreme.",
-
-        "Varenth":
-        "A fascist state and puppet of Ochio Imperia. Info not fully added, if wanted request in the request drop down.",
-
-        "Solkar":
-        "A fascist state and frontier into the rim of the galaxy. Info not fully added, if wanted request in the request drop down.",
-
-        "Krestal":
-        "An authoritarian communist state and puppet of Sovern, has had several border conflicts with Ochio Imperia, and tensions have been rising in Sector 3 between the communist and fascist bloc in the region. Info not fully added, if wanted request in the request drop down."
-    },
-
-    sector4: {
-
-        "Sovern":
-        "The original communist state in Oracandia, and ally of the Darikian Empire. It spread communism into Sector 3 to prevent the area from falling under fascist hands. They are made of 15 member republics, with the largest and most powerful being Sovern. Info not fully added, if wanted request in the request drop down."
-    },
-
-    sector5: {
-
-        "Darikian Empire":
-        "The original Devorist state. Info not fully added, if wanted request in the request drop down. Most info will be in the History tab.",
-
-        "Lijgysk":
-        "A semi-democratic military dictatorship, enemy of the Darikian Empire, formed after the Darikian Civil War. Info not fully added, if wanted request in the request drop down.",
-
-        "Empire of the Rim":
-        "Devorist state, puppet of the Darikian Empire, formed after the Darikian Civil War from Darikian remnants. Info not fully added, if wanted request in the request drop down."
-    },
-
-    sector6: {
-
-        "Concordia":
-        "A monarchist hyper-militarist state and member of the Galactic Accord.",
-
-        "Agis":
-        "A monarchist state and member of the Galactic Accord.",
-
-        "Habsart":
-        "A monarchist state and leader of the Galactic Accord.",
-
-        "Kessant":
-        "Info not added, if wanted request in the request drop down.",
-
-        "Orvendal":
-        "Info not added, if wanted request in the request drop down.",
-
-        "Virell":
-        "Info not added, if wanted request in the request drop down.",
-
-        "Solmire":
-        "Info not added, if wanted request in the request drop down.",
-
-        "Narenth":
-        "Info not added, if wanted request in the request drop down.",
-
-        "Thalygia":
-        "Info not added, if wanted request in the request drop down."
-    }
-
+    "Concordia": "A monarchist hyper-militarist state and member of the Galactic Accord.",
+    "Agis": "A monarchist state and member of the Galactic Accord.",
+    "Habsart": "A monarchist state and leader of the Galactic Accord.",
+    "Kessant": "Info not added, if wanted request in the request drop down.",
+    "Orvendal": "Info not added, if wanted request in the request drop down.",
+    "Virell": "Info not added, if wanted request in the request drop down.",
+    "Solmire": "Info not added, if wanted request in the request drop down.",
+    "Narenth": "Info not added, if wanted request in the request drop down.",
+    "Thalygia": "Info not added, if wanted request in the request drop down."
 };
 
-function loadSector() {
+function showCountry(country) {
+    document.getElementById("details").innerText = country + "\n\n" + data[country];
+}
+</script>
 
-    const sector = document.getElementById("sectorSelect").value;
-    const list = document.getElementById("countryList");
-    const details = document.getElementById("details");
-
-    list.innerHTML = "";
-
-    for (const country in data[sector]) {
-
-        const div = document.createElement("div");
-        div.className = "country";
-        div.innerText = country;
-
-        div.onclick = function () {
-            details.innerText =
-                country + "\n\n" + data[sector][country];
-        };
-
-        list.appendChild(div);
-    }
+</body>
+</html>
 
     details.innerText = "Select a country to view details.";
 }
