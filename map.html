@@ -1,365 +1,377 @@
-<div class="map-wrapper">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Oracandia Map</title>
 
-    <img src="map of Oracandia.png"
-         class="map-img"
-         alt="Map of Oracandia">
+<style>
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
 
-    <svg class="map-overlay"
-         viewBox="0 0 2048 1999"
-         preserveAspectRatio="none">
+header {
+    padding: 30px;
+    border-bottom: 2px solid red;
+}
 
-        <!-- CLICK DETECTOR -->
-        <rect width="2048"
-              height="1999"
-              fill="transparent"
-              onclick="recordPoint(event)" />
+h1 {
+    color: red;
+}
 
-        <!-- CORE -->
+nav a {
+    color: red;
+    margin: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        <polygon class="nation"
-        onclick="showCountry('The Oracandian Empire')"
-        points="
-        828,907
-        1008,880
-        1194,914
-        1203,1085
-        1089,1166
-        898,1147
-        801,1046
-        " />
+nav a:hover {
+    color: white;
+}
 
-        <!-- SECTOR 1 -->
+.container {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
-        <polygon class="nation"
-        onclick="showCountry('Alsburg')"
-        points="
-        1187,858
-        1261,859
-        1264,1018
-        1175,1018
-        " />
+.map-panel {
+    width: 55%;
+    border: 1px solid red;
+    padding: 20px;
+    background-color: #080808;
+}
 
-        <polygon class="nation"
-        onclick="showCountry('The Qumarian Caliphate')"
-        points="
-        1274,491
-        1499,482
-        1652,564
-        1715,802
-        1631,987
-        1432,1017
-        1275,894
-        1256,663
-        " />
+.info-panel {
+    width: 35%;
+    border: 1px solid red;
+    padding: 20px;
+    min-height: 300px;
+    background-color: #080808;
+}
 
-        <polygon class="nation"
-        onclick="showCountry('The Velorian Patriarchate')"
-        points="
-        1696,302
-        1853,318
-        1904,607
-        1817,709
-        1678,556
-        " />
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: black;
+}
 
-        <polygon class="nation"
-        onclick="showCountry('Virllia')"
-        points="
-        1031,52
-        1500,75
-        1684,219
-        1290,259
-        941,184
-        " />
+.map-img {
+    width: 100%;
+    display: block;
+}
 
-        <!-- SECTOR 2 -->
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
-        <polygon class="nation"
-        onclick="showCountry('Ulm')"
-        points="
-        1038,589
-        1226,593
-        1223,860
-        1092,912
-        1026,817
-        " />
+.nation {
+    fill: rgba(255, 0, 0, 0);
+    stroke: rgba(255, 0, 0, 0);
+    stroke-width: 5;
+    cursor: pointer;
+}
 
-        <polygon class="nation"
-        onclick="showCountry('Hadlia')"
-        points="
-        918,401
-        1145,410
-        1210,573
-        1044,594
-        917,534
-        " />
+.nation:hover {
+    fill: rgba(255, 0, 0, 0.22);
+    stroke: red;
+}
 
-        <polygon class="nation"
-        onclick="showCountry('Bratia')"
-        points="
-        828,492
-        927,531
-        963,720
-        851,692
-        " />
+.details {
+    text-align: left;
+    white-space: pre-wrap;
+}
 
-        <polygon class="nation"
-        onclick="showCountry('Kessitri')"
-        points="
-        704,231
-        1091,246
-        1045,408
-        846,417
-        625,336
-        " />
+.request-box {
+    margin-top: 20px;
+    border-top: 1px solid red;
+    padding-top: 20px;
+}
 
-        <polygon class="nation"
-        onclick="showCountry('Myrrivphia')"
-        points="
-        366,289
-        709,230
-        842,414
-        725,563
-        444,556
-        271,471
-        " />
+input, textarea, select {
+    width: 100%;
+    background: #111;
+    color: white;
+    border: 1px solid red;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
 
-        <!-- SECTOR 3 -->
+button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+}
 
-        <polygon class="nation"
-        onclick="showCountry('Ochio Imperia')"
-        points="
-        733,642
-        951,646
-        1025,815
-        866,912
-        696,847
-        650,716
-        " />
+button:hover {
+    background: darkred;
+}
 
-        <polygon class="nation"
-        onclick="showCountry('Krestal')"
-        points="
-        620,661
-        706,648
-        777,682
-        787,801
-        740,864
-        658,869
-        599,815
-        598,720
-        " />
+@media (max-width: 900px) {
+    .map-panel,
+    .info-panel {
+        width: 100%;
+    }
+}
+</style>
+</head>
 
-        <polygon class="nation"
-        onclick="showCountry('Varenth')"
-        points="
-        690,548
-        875,575
-        879,685
-        758,680
-        " />
+<body>
 
-        <polygon class="nation"
-        onclick="showCountry('Dravos')"
-        points="
-        328,558
-        618,505
-        620,651
-        539,768
-        349,758
-        265,660
-        " />
+<header>
+    <h1>Oracandia Map</h1>
 
-        <polygon class="nation"
-        onclick="showCountry('Varkoss')"
-        points="
-        10,684
-        238,541
-        254,947
-        15,1006
-        " />
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ministry.html">Foreign Affairs</a>
+        <a href="map.html">Map</a>
+    </nav>
+</header>
 
-        <polygon class="nation"
-        onclick="showCountry('Solkar')"
-        points="
-        0,991
-        247,991
-        261,1268
-        38,1265
-        " />
+<div class="container">
 
-        <polygon class="nation"
-        onclick="showCountry('Helrya')"
-        points="
-        435,736
-        623,636
-        623,838
-        484,874
-        372,805
-        " />
+    <div class="map-panel">
+        <h2>Click a Country</h2>
 
-        <polygon class="nation"
-        onclick="showCountry('Lumyllphish')"
-        points="
-        233,835
-        428,741
-        371,904
-        258,965
-        170,909
-        " />
+        <div class="map-wrapper">
+            <img src="map of Oracandia.png" class="map-img" alt="Map of Oracandia">
 
-        <!-- SECTOR 4 -->
+            <svg class="map-overlay" viewBox="0 0 2048 1999" preserveAspectRatio="xMidYMid meet">
 
-        <polygon class="nation"
-        onclick="showCountry('Sovern')"
-        points="
-        242,1025
-        725,1017
-        821,1170
-        748,1787
-        426,1782
-        195,1495
-        145,1176
-        " />
+                <!-- CORE -->
+                <polygon class="nation" onclick="showCountry('The Oracandian Empire')"
+                points="828,907 1008,880 1194,914 1203,1085 1089,1166 898,1147 801,1046" />
 
-        <!-- SECTOR 5 -->
+                <!-- SECTOR 1 -->
+                <polygon class="nation" onclick="showCountry('Alsburg')"
+                points="1187,858 1261,859 1264,1018 1175,1018" />
 
-        <polygon class="nation"
-        onclick="showCountry('Darikian Empire')"
-        points="
-        747,1147
-        1046,1163
-        1166,1362
-        1047,1747
-        781,1763
-        624,1412
-        " />
+                <polygon class="nation" onclick="showCountry('The Qumarian Caliphate')"
+                points="1274,491 1499,482 1652,564 1715,802 1631,987 1432,1017 1275,894 1256,663" />
 
-        <polygon class="nation"
-        onclick="showCountry('Lijgysk')"
-        points="
-        1051,1704
-        1333,1690
-        1334,1978
-        1011,1975
-        916,1839
-        " />
+                <polygon class="nation" onclick="showCountry('The Velorian Patriarchate')"
+                points="1696,302 1853,318 1904,607 1817,709 1678,556" />
 
-        <polygon class="nation"
-        onclick="showCountry('Empire of the Rim')"
-        points="
-        1329,1680
-        1708,1670
-        1808,1980
-        1332,1978
-        " />
+                <polygon class="nation" onclick="showCountry('Virllia')"
+                points="1031,52 1500,75 1684,219 1290,259 941,184" />
 
-        <!-- SECTOR 6 -->
+                <!-- SECTOR 2 -->
+                <polygon class="nation" onclick="showCountry('Ulm')"
+                points="1038,589 1226,593 1223,860 1092,912 1026,817" />
 
-        <polygon class="nation"
-        onclick="showCountry('Agis')"
-        points="
-        1022,1089
-        1174,1076
-        1233,1247
-        1069,1287
-        962,1188
-        " />
+                <polygon class="nation" onclick="showCountry('Hadlia')"
+                points="918,401 1145,410 1210,573 1044,594 917,534" />
 
-        <polygon class="nation"
-        onclick="showCountry('Habsart')"
-        points="
-        1366,1022
-        2040,1004
-        1970,1420
-        1611,1440
-        1365,1274
-        " />
+                <polygon class="nation" onclick="showCountry('Bratia')"
+                points="828,492 927,531 963,720 851,692" />
 
-        <polygon class="nation"
-        onclick="showCountry('Concordia')"
-        points="
-        1296,1382
-        1680,1384
-        1777,1685
-        1357,1676
-        " />
+                <polygon class="nation" onclick="showCountry('Kessitri')"
+                points="704,231 1091,246 1045,408 846,417 625,336" />
 
-        <polygon class="nation"
-        onclick="showCountry('Narenth')"
-        points="
-        1104,1258
-        1294,1265
-        1300,1450
-        1148,1458
-        1045,1365
-        " />
+                <polygon class="nation" onclick="showCountry('Myrrivphia')"
+                points="366,289 709,230 842,414 725,563 444,556 271,471" />
 
-        <polygon class="nation"
-        onclick="showCountry('Solmire')"
-        points="
-        1040,1164
-        1174,1167
-        1148,1260
-        1027,1275
-        " />
+                <!-- SECTOR 3 -->
+                <polygon class="nation" onclick="showCountry('Ochio Imperia')"
+                points="733,642 951,646 1025,815 866,912 696,847 650,716" />
 
-        <polygon class="nation"
-        onclick="showCountry('Virell')"
-        points="
-        1230,1175
-        1320,1175
-        1325,1280
-        1238,1285
-        " />
+                <polygon class="nation" onclick="showCountry('Krestal')"
+                points="620,661 706,648 777,682 787,801 740,864 658,869 599,815 598,720" />
 
-        <polygon class="nation"
-        onclick="showCountry('Orvendal')"
-        points="
-        1322,1130
-        1442,1135
-        1438,1274
-        1325,1280
-        " />
+                <polygon class="nation" onclick="showCountry('Varenth')"
+                points="690,548 875,575 879,685 758,680" />
 
-        <polygon class="nation"
-        onclick="showCountry('Kessant')"
-        points="
-        1178,1064
-        1290,1068
-        1284,1172
-        1184,1170
-        " />
+                <polygon class="nation" onclick="showCountry('Dravos')"
+                points="328,558 618,505 620,651 539,768 349,758 265,660" />
 
-        <polygon class="nation"
-        onclick="showCountry('Thalygia')"
-        points="
-        1905,840
-        2040,846
-        2040,1128
-        1918,1122
-        " />
+                <polygon class="nation" onclick="showCountry('Varkoss')"
+                points="10,684 238,541 254,947 15,1006" />
 
-    </svg>
-</div>
+                <polygon class="nation" onclick="showCountry('Solkar')"
+                points="0,991 247,991 261,1268 38,1265" />
 
-<!-- POINT RECORDER -->
+                <polygon class="nation" onclick="showCountry('Helrya')"
+                points="435,736 623,636 623,838 484,874 372,805" />
 
-<div style="margin-top:20px;">
+                <polygon class="nation" onclick="showCountry('Lumyllphish')"
+                points="233,835 428,741 371,904 258,965 170,909" />
 
-<textarea id="pointOutput"
-rows="6"
-style="
-width:100%;
-background:#111;
-color:white;
-border:1px solid red;
-padding:10px;
-"
-placeholder="Clicked points will appear here"></textarea>
+                <!-- SECTOR 4 -->
+                <polygon class="nation" onclick="showCountry('Sovern')"
+                points="242,1025 725,1017 821,1170 748,1787 426,1782 195,1495 145,1176" />
 
-<button onclick="clearPoints()">
-Clear Points
-</button>
+                <!-- SECTOR 5 -->
+                <polygon class="nation" onclick="showCountry('Darikian Empire')"
+                points="747,1147 1046,1163 1166,1362 1047,1747 781,1763 624,1412" />
+
+                <polygon class="nation" onclick="showCountry('Lijgysk')"
+                points="1051,1704 1333,1690 1334,1978 1011,1975 916,1839" />
+
+                <polygon class="nation" onclick="showCountry('Empire of the Rim')"
+                points="1329,1680 1708,1670 1808,1980 1332,1978" />
+
+                <!-- SECTOR 6 -->
+                <polygon class="nation" onclick="showCountry('Agis')"
+                points="1022,1089 1174,1076 1233,1247 1069,1287 962,1188" />
+
+                <polygon class="nation" onclick="showCountry('Habsart')"
+                points="1366,1022 2040,1004 1970,1420 1611,1440 1365,1274" />
+
+                <polygon class="nation" onclick="showCountry('Concordia')"
+                points="1296,1382 1680,1384 1777,1685 1357,1676" />
+
+                <polygon class="nation" onclick="showCountry('Narenth')"
+                points="1104,1258 1294,1265 1300,1450 1148,1458 1045,1365" />
+
+                <polygon class="nation" onclick="showCountry('Solmire')"
+                points="1040,1164 1174,1167 1148,1260 1027,1275" />
+
+                <polygon class="nation" onclick="showCountry('Virell')"
+                points="1230,1175 1320,1175 1325,1280 1238,1285" />
+
+                <polygon class="nation" onclick="showCountry('Orvendal')"
+                points="1322,1130 1442,1135 1438,1274 1325,1280" />
+
+                <polygon class="nation" onclick="showCountry('Kessant')"
+                points="1178,1064 1290,1068 1284,1172 1184,1170" />
+
+                <polygon class="nation" onclick="showCountry('Thalygia')"
+                points="1905,840 2040,846 2040,1128 1918,1122" />
+
+            </svg>
+        </div>
+    </div>
+
+    <div class="info-panel">
+        <h2>Information</h2>
+
+        <div id="details" class="details">
+            Click a country on the map to view details.
+        </div>
+
+        <div class="request-box">
+            <h2>Request Additional Information</h2>
+
+            <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+                <select name="requested_nation" required>
+                    <option value="">Select a Nation</option>
+                    <option>The Oracandian Empire</option>
+                    <option>Alsburg</option>
+                    <option>The Qumarian Caliphate</option>
+                    <option>The Velorian Patriarchate</option>
+                    <option>Virllia</option>
+                    <option>Ulm</option>
+                    <option>Hadlia</option>
+                    <option>Bratia</option>
+                    <option>Kessitri</option>
+                    <option>Myrrivphia</option>
+                    <option>Ochio Imperia</option>
+                    <option>Dravos</option>
+                    <option>Varkoss</option>
+                    <option>Varenth</option>
+                    <option>Solkar</option>
+                    <option>Krestal</option>
+                    <option>Helrya</option>
+                    <option>Lumyllphish</option>
+                    <option>Sovern</option>
+                    <option>Darikian Empire</option>
+                    <option>Lijgysk</option>
+                    <option>Empire of the Rim</option>
+                    <option>Concordia</option>
+                    <option>Agis</option>
+                    <option>Habsart</option>
+                    <option>Kessant</option>
+                    <option>Orvendal</option>
+                    <option>Virell</option>
+                    <option>Solmire</option>
+                    <option>Narenth</option>
+                    <option>Thalygia</option>
+                    <option>Any state in the galactic accord</option>
+                </select>
+
+                <input type="text" name="nation_name" placeholder="Your Nation Name" required>
+
+                <textarea name="reason" rows="5" placeholder="Why are you requesting additional information?" required></textarea>
+
+                <button type="submit">Submit Request</button>
+            </form>
+        </div>
+    </div>
 
 </div>
+
+<script>
+const data = {
+    "The Oracandian Empire": "A virtually nonexistent state with no real authority, it is in constant chaos due to the various criminal organizations having way more authority than the central government on New Terra. This was the first state set up after human migrants departed the Milky Way, establishing the first foothold in Oracandia for humans. It collapsed after massive amounts of ethnic, religious, and political violence took place, causing many to depart the core to other parts of the galaxy.",
+
+    "Alsburg": "A monarchist state, and vassal of Ulm, established after the Great Qumarian War in order for Ulm to have trade routes to the Galactic Accord and to protect the ethnic Germans of the region from religious persecution. The name Alsburg comes from an ancient Earth town in southern Germany.",
+
+    "The Qumarian Caliphate": "A theocratic Islamic state, established after a mass exodus of Sunni Muslims fled the Oracandian Empire due to religious persecution. They lost the Great Qumarian War, which originally was a local conflict between Qumar and Veloria. However, Ulm and the Galactic Accord intervened quickly, turning the balance of power in favor of Veloria and allowing them to win.",
+
+    "The Velorian Patriarchate": "A theocratic Orthodox Christian state, established after Queen Savpia ended an alien presence on modern-day Velor, establishing the state. She quickly conquered the alien states to the north and converted the remaining aliens to Orthodoxy. Human migrants entered the state after Qumar banned religious freedom, forcing Orthodox and Catholics to flee. They cemented their power after the Great Qumar War.",
+
+    "Virllia": "Info not added, if wanted request in the request drop down.",
+
+    "Ulm": "Overlord of Alsburg, this state was formed from German and Catholic migrants into Sector 2. It has cemented its power as Sector 2's definitive power.",
+
+    "Hadlia": "Info not added, if wanted request in the request drop down.",
+    "Bratia": "Info not added, if wanted request in the request drop down.",
+    "Kessitri": "Info not added, if wanted request in the request drop down.",
+    "Myrrivphia": "Info not added, if wanted request in the request drop down.",
+
+    "Ochio Imperia": "Fascist state formed after fascists fled the Galactic Core. They are constantly in border skirmishes with their communist neighbors and have spread their ideology across Sector 3.",
+
+    "Dravos": "A fascist state formed after an election in Varkoss resulted in the NSV taking power in the old Kingdom of Varkoss. The aliens, fearing for their lives, broke free, creating the state of Dravos.",
+
+    "Varkoss": "National Socialist state, originally a monarchy. After a defeat to Lumyllphish, the monarchy collapsed into a temporary democracy; however, radicalization of the Varks caused the National Socialists to take power. This horribly evil state has been condemned by every state in Oracandia; however, due to regional power dynamics, they exist as the communists and fascists do not want to give the other more power, so they exist unstable, economically and politically isolated, and politically extreme.",
+
+    "Varenth": "A fascist state and puppet of Ochio Imperia. Info not fully added, if wanted request in the request drop down.",
+    "Solkar": "A fascist state and frontier into the rim of the galaxy. Info not fully added, if wanted request in the request drop down.",
+    "Krestal": "An authoritarian communist state and puppet of Sovern, has had several border conflicts with Ochio Imperia, and tensions have been rising in Sector 3 between the communist and fascist bloc in the region. Info not fully added, if wanted request in the request drop down.",
+    "Helrya": "Info not added, if wanted request in the request drop down.",
+    "Lumyllphish": "Info not added, if wanted request in the request drop down.",
+
+    "Sovern": "The original communist state in Oracandia, and ally of the Darikian Empire. It spread communism into Sector 3 to prevent the area from falling under fascist hands. They are made of 15 member republics, with the largest and most powerful being Sovern. Info not fully added, if wanted request in the request drop down.",
+
+    "Darikian Empire": "The original Devorist state. Info not fully added, if wanted request in the request drop down. Most info will be in the History tab.",
+
+    "Lijgysk": "A semi-democratic military dictatorship, enemy of the Darikian Empire, formed after the Darikian Civil War. Info not fully added, if wanted request in the request drop down.",
+
+    "Empire of the Rim": "Devorist state, puppet of the Darikian Empire, formed after the Darikian Civil War from Darikian remnants. Info not fully added, if wanted request in the request drop down.",
+
+    "Concordia": "A monarchist hyper-militarist state and member of the Galactic Accord.",
+    "Agis": "A monarchist state and member of the Galactic Accord.",
+    "Habsart": "A monarchist state and leader of the Galactic Accord.",
+    "Kessant": "Info not added, if wanted request in the request drop down.",
+    "Orvendal": "Info not added, if wanted request in the request drop down.",
+    "Virell": "Info not added, if wanted request in the request drop down.",
+    "Solmire": "Info not added, if wanted request in the request drop down.",
+    "Narenth": "Info not added, if wanted request in the request drop down.",
+    "Thalygia": "Info not added, if wanted request in the request drop down."
+};
+
+function showCountry(country) {
+    document.getElementById("details").innerText = country + "\n\n" + data[country];
+}
+</script>
+
+</body>
+</html>
