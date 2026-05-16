@@ -9,11 +9,46 @@
 
     <style>
 
-       header {
-    text-align: center;
-    padding: 40px 20px;
-    border-bottom: 2px solid red;
-    background-color: black;
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 2px solid red;
+            background-color: black;
+        }
+
+        header h1 {
+            color: red;
+            font-size: 48px;
+            margin: 0 0 10px 0;
+        }
+
+        header p {
+            margin: 8px 0;
+            color: white;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: red;
+            margin: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: white;
         }
 
         .container {
@@ -27,6 +62,7 @@
             padding: 25px;
             margin-bottom: 40px;
             background-color: #080808;
+            box-shadow: 0 0 10px rgba(255,0,0,0.15);
         }
 
         .relation-grid {
@@ -39,6 +75,7 @@
             border: 1px solid #222;
             padding: 15px;
             background-color: #111;
+            box-shadow: 0 0 10px rgba(255,0,0,0.15);
         }
 
         .ally {
@@ -65,33 +102,7 @@
             border: 1px solid red;
             padding: 25px;
             background-color: #080808;
-        }
-
-        input,
-        textarea,
-        select {
-            width: 100%;
-            background-color: #111;
-            color: white;
-            border: 1px solid red;
-            padding: 10px;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: red;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        button:hover {
-            background-color: darkred;
+            box-shadow: 0 0 10px rgba(255,0,0,0.15);
         }
 
         .notice {
@@ -100,6 +111,22 @@
             margin-bottom: 30px;
             background-color: #111;
             color: #cccccc;
+        }
+
+        .telegram-button {
+            display: inline-block;
+            background-color: red;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.2s;
+        }
+
+        .telegram-button:hover {
+            background-color: darkred;
+            color: white;
         }
 
         footer {
@@ -133,123 +160,127 @@
 
 </header>
 
-    <div class="container">
+<div class="container">
 
-        <div class="notice">
-            Foreign diplomatic communications are monitored by the Central Administrative Directorate.
-            Unauthorized interference with imperial communications may result in sanctions.
-        </div>
+    <div class="notice">
+        Foreign diplomatic communications are monitored by the Central Administrative Directorate.
+        Unauthorized interference with imperial communications may result in sanctions.
+    </div>
 
-        <section class="relations">
+    <section class="relations">
 
-            <h2>Current Foreign Relations</h2>
+        <h2>Current Foreign Relations</h2>
 
-            <div class="relation-grid">
+        <div class="relation-grid">
 
-                <!-- ALLIES -->
-                <div class="relation-box">
+            <!-- ALLIES -->
+            <div class="relation-box">
 
-                    <h3 class="ally">Strategic Allies</h3>
+                <h3 class="ally">Strategic Allies</h3>
 
-                    <ul>
-                        <li>Sovern</li>
-                        <li>The Empire of the Rim</li>
-                        <li>The Kingdom of Romar</li>
-                        <li>Western Vire Bobsur</li>
-                    </ul>
-
-                </div>
-
-                <!-- NEUTRALS -->
-                <div class="relation-box">
-
-                    <h3 class="neutral">Neutral States</h3>
-
-                    <ul>
-                        <li>The Qumarian Caliphate</li>
-                        <li>Thalygia</li>
-                        <li>Kessant</li>
-                        <li>Solmire</li>
-                        <li>Narenth</li>
-                        <li>Virell</li>
-                        <li>Orvendal</li>
-                        <li>Alsburg</li>
-                        <li>Ulm</li>
-                        <li>The Berliner Republic</li>
-                        <li>The Velorian Patriarchate</li>
-                        <li>Virllia</li>
-                        <li>Kessitri</li>
-                        <li>Hadlia</li>
-                        <li>Bratia</li>
-                        <li>Myrrivphia</li>
-                        <li>Varenth</li>
-                        <li>Ochio Imperia</li>
-                        <li>Krestal</li>
-                        <li>Helyra</li>
-                        <li>Dravos</li>
-                        <li>Lumyllphish</li>
-                        <li>Solkar</li>
-                    </ul>
-
-                </div>
-
-                <!-- ENEMIES -->
-                <div class="relation-box">
-
-                    <h3 class="enemy">Hostile Powers</h3>
-
-                    <ul>
-                        <li>The Habsart Dominion</li>
-                        <li>Concordia</li>
-                        <li>Agis</li>
-                        <li>Lijgysk</li>
-                        <li>Varkoss</li>
-                        <li>The Oracandian Empire</li>
-                        <li>The UCC</li>
-                    </ul>
-
-                </div>
+                <ul>
+                    <li>Sovern</li>
+                    <li>The Empire of the Rim</li>
+                    <li>The Kingdom of Romar</li>
+                    <li>Western Vire Bobsur</li>
+                </ul>
 
             </div>
 
-        </section>
+            <!-- NEUTRALS -->
+            <div class="relation-box">
 
-       <section class="request-form">
+                <h3 class="neutral">Neutral States</h3>
 
-    <h2>Diplomatic Request Form</h2>
+                <ul>
+                    <li>The Qumarian Caliphate</li>
+                    <li>Thalygia</li>
+                    <li>Kessant</li>
+                    <li>Solmire</li>
+                    <li>Narenth</li>
+                    <li>Virell</li>
+                    <li>Orvendal</li>
+                    <li>Alsburg</li>
+                    <li>Ulm</li>
+                    <li>The Berliner Republic</li>
+                    <li>The Velorian Patriarchate</li>
+                    <li>Virllia</li>
+                    <li>Kessitri</li>
+                    <li>Hadlia</li>
+                    <li>Bratia</li>
+                    <li>Myrrivphia</li>
+                    <li>Varenth</li>
+                    <li>Ochio Imperia</li>
+                    <li>Krestal</li>
+                    <li>Helyra</li>
+                    <li>Dravos</li>
+                    <li>Lumyllphish</li>
+                    <li>Solkar</li>
+                </ul>
 
-    <div class="notice">
-        To submit a diplomatic request, please send a NationStates telegram to:
-        <br><br>
-        <strong>Darkening Empire</strong>
-        <br><br>
-        Include the following information in your telegram:
-    </div>
+            </div>
 
-    <ul>
-        <li>Your nation name</li>
-        <li>Your region</li>
-        <li>Your government type</li>
-        <li>Request type</li>
-        <li>Priority level</li>
-        <li>Your diplomatic message</li>
-    </ul>
+            <!-- ENEMIES -->
+            <div class="relation-box">
 
-    <p>
-        Requests may include embassy exchanges, trade agreements, non-aggression pacts,
-        military pacts, recognition requests, state visits, or other diplomatic communications.
-    </p>
+                <h3 class="enemy">Hostile Powers</h3>
 
-    <a class="telegram-button"
-       href="https://www.nationstates.net/page=compose_telegram?tgto=darkening_empire"
-       target="_blank">
-        Send NationStates Telegram
-    </a>
+                <ul>
+                    <li>The Habsart Dominion</li>
+                    <li>Concordia</li>
+                    <li>Agis</li>
+                    <li>Lijgysk</li>
+                    <li>Varkoss</li>
+                    <li>The Oracandian Empire</li>
+                    <li>The UCC</li>
+                </ul>
 
-</section>
-    <footer>
-        Official Communications Portal of the Dairikian Empire
-    </footer>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="request-form">
+
+        <h2>Diplomatic Request Form</h2>
+
+        <div class="notice">
+            To submit a diplomatic request, please send a NationStates telegram to:
+            <br><br>
+            <strong>Darkening Empire</strong>
+            <br><br>
+            Include the following information in your telegram:
+        </div>
+
+        <ul>
+            <li>Your nation name</li>
+            <li>Your region</li>
+            <li>Your government type</li>
+            <li>Request type</li>
+            <li>Priority level</li>
+            <li>Your diplomatic message</li>
+        </ul>
+
+        <p>
+            Requests may include embassy exchanges, trade agreements,
+            non-aggression pacts, military pacts, recognition requests,
+            state visits, or other diplomatic communications.
+        </p>
+
+        <a class="telegram-button"
+           href="https://www.nationstates.net/page=compose_telegram?tgto=darkening_empire"
+           target="_blank">
+            Send NationStates Telegram
+        </a>
+
+    </section>
+
+</div>
+
+<footer>
+    Official Communications Portal of the Darikian Empire
+</footer>
 
 </body>
 </html>
