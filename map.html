@@ -67,20 +67,24 @@ nav a:hover {
     display: block;
 }
 
-.map-country {
+.map-overlay {
     position: absolute;
-    width: 42px;
-    height: 42px;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    border: 2px solid transparent;
-    background: rgba(255, 0, 0, 0.05);
-    cursor: pointer;
+    inset: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.map-country:hover {
-    background: rgba(255, 0, 0, 0.4);
-    border-color: red;
+.nation {
+    fill: rgba(255, 0, 0, 0);
+    stroke: rgba(255, 0, 0, 0);
+    stroke-width: 0.4;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.nation:hover {
+    fill: rgba(255, 0, 0, 0.25);
+    stroke: red;
 }
 
 .details {
@@ -146,40 +150,41 @@ button:hover {
         <div class="map-wrapper">
             <img src="map of Oracandia.png" class="map-img" alt="Map of Oracandia">
 
-            <button class="map-country" style="left:49%; top:52%;" onclick="showCountry('The Oracandian Empire')"></button>
-            <button class="map-country" style="left:61%; top:49%;" onclick="showCountry('Alsburg')"></button>
-            <button class="map-country" style="left:73%; top:40%;" onclick="showCountry('The Qumarian Caliphate')"></button>
-            <button class="map-country" style="left:81%; top:29%;" onclick="showCountry('The Velorian Patriarchate')"></button>
-            <button class="map-country" style="left:62%; top:13%;" onclick="showCountry('Virllia')"></button>
+            <svg class="map-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
 
-            <button class="map-country" style="left:57%; top:38%;" onclick="showCountry('Ulm')"></button>
-            <button class="map-country" style="left:56%; top:28%;" onclick="showCountry('Hadlia')"></button>
-            <button class="map-country" style="left:50%; top:29%;" onclick="showCountry('Bratia')"></button>
-            <button class="map-country" style="left:46%; top:17%;" onclick="showCountry('Kessitri')"></button>
-            <button class="map-country" style="left:34%; top:22%;" onclick="showCountry('Myrrivphia')"></button>
+                <polygon class="nation" onclick="showCountry('The Oracandian Empire')" points="42,47 49,43 58,45 59,54 53,59 44,56 39,52" />
+                <polygon class="nation" onclick="showCountry('Darikian Empire')" points="39,59 51,61 57,70 51,79 39,75 34,65" />
+                <polygon class="nation" onclick="showCountry('Sovern')" points="14,45 35,45 39,55 34,82 18,83 9,65" />
+                <polygon class="nation" onclick="showCountry('Ulm')" points="53,33 63,34 63,46 57,48 51,43" />
+                <polygon class="nation" onclick="showCountry('Alsburg')" points="60,45 65,45 66,54 60,55" />
+                <polygon class="nation" onclick="showCountry('The Qumarian Caliphate')" points="66,22 80,22 88,43 78,53 66,50 64,35" />
+                <polygon class="nation" onclick="showCountry('The Velorian Patriarchate')" points="76,10 88,13 92,37 86,39 80,22" />
+                <polygon class="nation" onclick="showCountry('Virllia')" points="50,3 75,9 65,15 44,12" />
+                <polygon class="nation" onclick="showCountry('Hadlia')" points="50,20 63,21 64,34 54,34 47,29" />
+                <polygon class="nation" onclick="showCountry('Bratia')" points="45,28 51,30 52,40 47,39" />
+                <polygon class="nation" onclick="showCountry('Kessitri')" points="33,11 55,14 52,20 42,21 29,17" />
+                <polygon class="nation" onclick="showCountry('Myrrivphia')" points="18,17 38,11 50,18 43,25 22,25" />
+                <polygon class="nation" onclick="showCountry('Ochio Imperia')" points="36,33 48,32 51,43 42,47 33,44" />
+                <polygon class="nation" onclick="showCountry('Krestal')" points="27,32 36,33 36,45 29,47 24,40" />
+                <polygon class="nation" onclick="showCountry('Varenth')" points="36,29 46,30 44,36 36,34" />
+                <polygon class="nation" onclick="showCountry('Dravos')" points="20,30 35,28 31,35 22,38 17,34" />
+                <polygon class="nation" onclick="showCountry('Varkoss')" points="8,35 20,31 17,46 8,51 4,45" />
+                <polygon class="nation" onclick="showCountry('Solkar')" points="5,52 15,50 14,64 6,63" />
+                <polygon class="nation" onclick="showCountry('Helrya')" points="20,37 30,34 29,45 18,45" />
+                <polygon class="nation" onclick="showCountry('Lumyllphish')" points="13,43 22,43 19,50 12,49" />
+                <polygon class="nation" onclick="showCountry('Lijgysk')" points="48,75 66,73 61,85 48,86" />
+                <polygon class="nation" onclick="showCountry('Empire of the Rim')" points="65,76 82,76 77,88 62,86" />
+                <polygon class="nation" onclick="showCountry('Agis')" points="53,55 62,57 59,64 52,62" />
+                <polygon class="nation" onclick="showCountry('Habsart')" points="67,54 94,53 91,69 74,69 66,63" />
+                <polygon class="nation" onclick="showCountry('Concordia')" points="63,65 82,66 75,76 62,72" />
+                <polygon class="nation" onclick="showCountry('Narenth')" points="56,63 64,64 64,72 55,69" />
+                <polygon class="nation" onclick="showCountry('Solmire')" points="55,59 61,59 59,63 54,63" />
+                <polygon class="nation" onclick="showCountry('Virell')" points="64,59 69,59 68,65 63,65" />
+                <polygon class="nation" onclick="showCountry('Orvendal')" points="69,58 74,59 73,64 68,64" />
+                <polygon class="nation" onclick="showCountry('Kessant')" points="62,55 67,55 66,60 61,59" />
+                <polygon class="nation" onclick="showCountry('Thalygia')" points="88,47 98,47 96,57 88,55" />
 
-            <button class="map-country" style="left:44%; top:41%;" onclick="showCountry('Ochio Imperia')"></button>
-            <button class="map-country" style="left:26%; top:34%;" onclick="showCountry('Dravos')"></button>
-            <button class="map-country" style="left:14%; top:42%;" onclick="showCountry('Varkoss')"></button>
-            <button class="map-country" style="left:39%; top:32%;" onclick="showCountry('Varenth')"></button>
-            <button class="map-country" style="left:13%; top:53%;" onclick="showCountry('Solkar')"></button>
-            <button class="map-country" style="left:35%; top:40%;" onclick="showCountry('Krestal')"></button>
-
-            <button class="map-country" style="left:29%; top:59%;" onclick="showCountry('Sovern')"></button>
-
-            <button class="map-country" style="left:45%; top:67%;" onclick="showCountry('Darikian Empire')"></button>
-            <button class="map-country" style="left:57%; top:81%;" onclick="showCountry('Lijgysk')"></button>
-            <button class="map-country" style="left:71%; top:80%;" onclick="showCountry('Empire of the Rim')"></button>
-
-            <button class="map-country" style="left:73%; top:68%;" onclick="showCountry('Concordia')"></button>
-            <button class="map-country" style="left:55%; top:60%;" onclick="showCountry('Agis')"></button>
-            <button class="map-country" style="left:81%; top:58%;" onclick="showCountry('Habsart')"></button>
-            <button class="map-country" style="left:63%; top:56%;" onclick="showCountry('Kessant')"></button>
-            <button class="map-country" style="left:69%; top:61%;" onclick="showCountry('Orvendal')"></button>
-            <button class="map-country" style="left:65%; top:63%;" onclick="showCountry('Virell')"></button>
-            <button class="map-country" style="left:58%; top:63%;" onclick="showCountry('Solmire')"></button>
-            <button class="map-country" style="left:60%; top:67%;" onclick="showCountry('Narenth')"></button>
-            <button class="map-country" style="left:89%; top:50%;" onclick="showCountry('Thalygia')"></button>
+            </svg>
         </div>
     </div>
 
@@ -212,6 +217,8 @@ button:hover {
                     <option>Varenth</option>
                     <option>Solkar</option>
                     <option>Krestal</option>
+                    <option>Helrya</option>
+                    <option>Lumyllphish</option>
                     <option>Sovern</option>
                     <option>Darikian Empire</option>
                     <option>Lijgysk</option>
@@ -268,6 +275,9 @@ const data = {
     "Solkar": "A fascist state and frontier into the rim of the galaxy. Info not fully added, if wanted request in the request drop down.",
     "Krestal": "An authoritarian communist state and puppet of Sovern, has had several border conflicts with Ochio Imperia, and tensions have been rising in Sector 3 between the communist and fascist bloc in the region. Info not fully added, if wanted request in the request drop down.",
 
+    "Helrya": "Info not added, if wanted request in the request drop down.",
+    "Lumyllphish": "Info not added, if wanted request in the request drop down.",
+
     "Sovern": "The original communist state in Oracandia, and ally of the Darikian Empire. It spread communism into Sector 3 to prevent the area from falling under fascist hands. They are made of 15 member republics, with the largest and most powerful being Sovern. Info not fully added, if wanted request in the request drop down.",
 
     "Darikian Empire": "The original Devorist state. Info not fully added, if wanted request in the request drop down. Most info will be in the History tab.",
@@ -290,13 +300,7 @@ const data = {
 function showCountry(country) {
     document.getElementById("details").innerText = country + "\n\n" + data[country];
 }
-
-
-    details.innerText = "Select a country to view details.";
-}
-
-window.onload = loadSector;
-
 </script>
+
 </body>
 </html>
