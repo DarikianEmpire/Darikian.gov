@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<title>Darikian Empire</title>
 
-    <title>Darikian Empire</title>
+<style>
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
 
-    <style>
-
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
+header {
     text-align: center;
     padding: 40px 20px;
     border-bottom: 2px solid red;
@@ -42,6 +41,7 @@ nav a {
     margin: 12px;
     text-decoration: none;
     font-weight: bold;
+    font-size: 18px;
     transition: 0.2s;
 }
 
@@ -49,76 +49,55 @@ nav a:hover {
     color: white;
 }
 
-        nav {
-            margin-top: 30px;
-        }
+.content {
+    padding: 50px;
+}
 
-        nav a {
-            color: red;
-            margin: 15px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.2s;
-        }
+.portal-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
 
-        nav a:hover {
-            color: white;
-        }
+.portal {
+    border: 1px solid red;
+    padding: 30px;
+    width: 300px;
+    background-color: #080808;
+    transition: 0.2s;
+}
 
-        .content {
-            padding: 50px;
-        }
+.portal:hover {
+    background-color: #111;
+    transform: scale(1.02);
+}
 
-        .portal-boxes {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
+.portal a {
+    color: red;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+}
 
-        .portal {
-            border: 1px solid red;
-            padding: 30px;
-            width: 300px;
-            background-color: #080808;
-            transition: 0.2s;
-        }
+.portal p {
+    color: #cccccc;
+    margin-top: 15px;
+}
 
-        .portal:hover {
-            background-color: #111;
-            transform: scale(1.02);
-        }
-
-        .portal a {
-            color: red;
-            text-decoration: none;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .portal p {
-            color: #cccccc;
-            margin-top: 15px;
-        }
-
-        footer {
-            margin-top: 60px;
-            padding: 20px;
-            border-top: 2px solid red;
-            color: gray;
-        }
-
-    </style>
-
+footer {
+    margin-top: 60px;
+    padding: 20px;
+    border-top: 2px solid red;
+    color: gray;
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-
-        
+<header>
     <h1>The Darikian Empire</h1>
 
     <p><strong>Official Imperial Government Portal</strong></p>
@@ -132,55 +111,54 @@ nav a:hover {
         <a href="history.html">History</a>
     </nav>
 </header>
-        
 
-    
+<div class="content">
 
-    <div class="content">
+    <h2>Imperial Government Portal</h2>
 
-        <h2>Imperial Government Portal</h2>
+    <p>
+        Official state network of the Darikian Empire.
+        Access diplomatic records, galactic intelligence,
+        and administrative archives.
+    </p>
 
-        <p>
-            Official state network of the Darikian Empire.
-            Access diplomatic records, galactic intelligence,
-            and administrative archives.
-        </p>
+    <div class="portal-boxes">
 
-        <div class="portal-boxes">
+        <div class="portal">
+            <a href="ministry.html">Ministry of Foreign Affairs</a>
 
-            <div class="portal">
+            <p>
+                View diplomatic relations and submit foreign requests
+                to the imperial government.
+            </p>
+        </div>
 
-                <a href="ministry.html">
-                    Ministry of Foreign Affairs
-                </a>
+        <div class="portal">
+            <a href="map.html">Oracandia Galactic Map</a>
 
-                <p>
-                    View diplomatic relations and submit
-                    foreign requests to the imperial government.
-                </p>
+            <p>
+                Access sector intelligence, state records,
+                and political information across Oracandia.
+            </p>
+        </div>
 
-            </div>
+        <div class="portal">
+            <a href="history.html">Imperial History Archives</a>
 
-            <div class="portal">
-
-                <a href="map.html">
-                    Oracandia Galactic Map
-                </a>
-
-                <p>
-                    Access sector intelligence, state records,
-                    and political information across Oracandia.
-                </p>
-
-            </div>
-
+            <p>
+                Study the founding, royal period, communist revolution,
+                Devorist takeover, and Darikian Civil War.
+            </p>
         </div>
 
     </div>
 
-    <footer>
-        Dairikian State Network • Central Administration
-    </footer>
+</div>
+
+<footer>
+    Darikian State Network • Central Administration
+</footer>
 
 </body>
 </html>
+
