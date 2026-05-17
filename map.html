@@ -167,6 +167,46 @@ button:hover {
     background: darkred;
 }
 
+
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 2px solid red;
+    background-color: black;
+}
+
+header h1 {
+    color: red;
+    font-size: 48px;
+    margin: 0 0 10px 0;
+}
+
+header p {
+    margin: 8px 0;
+    color: white;
+}
+
+nav {
+    margin-top: 20px;
+}
+
+.telegram-button {
+    display: inline-block;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: 0.2s;
+}
+
+.telegram-button:hover {
+    background-color: darkred;
+    color: white;
+}
+
 @media (max-width: 900px) {
     .container {
         padding: 15px;
@@ -207,7 +247,7 @@ button:hover {
 <div class="container">
 
     <div class="map-panel">
-        <h2>Click a Country to learn more</h2>
+        <h2>Click a Country</h2>
 
         <div class="map-wrapper">
             <img src="map of Oracandia.png" class="map-img" alt="Map of Oracandia">
@@ -322,30 +362,43 @@ button:hover {
         </div>
 
         <div class="request-box">
-           <div class="request-box">
-    <h2>Submit Information Requests</h2>
+            <h2>Submit Information Requests</h2>
 
-    <p>
-        To request lore additions, country names, historical updates,
-        or recognition of new states within Oracandia,
-        please contact the administration directly on NationStates.
-    </p>
+            <p>
+                To request lore additions, country names, historical updates,
+                or recognition of new states within Oracandia, please contact
+                the administration directly on NationStates.
+            </p>
 
-    <p>
-        <strong>NationStates Telegram:</strong> Darkening Empire or The Darikian Empire
-    </p>
+            <p>
+                Send a telegram to:
+            </p>
 
-    <p>
-        Include:
-    </p>
+            <p>
+                <strong>Darkening Empire</strong>
+            </p>
 
-    <ul style="text-align:left; display:inline-block;">
-        <li>The nation or region involved</li>
-        <li>Your requested changes</li>
-        <li>Maps or screenshots if needed</li>
-        <li>Historical or lore information</li>
-    </ul>
+            <a class="telegram-button"
+               href="https://www.nationstates.net/page=compose_telegram?tgto=darkening_empire"
+               target="_blank">
+                Send NationStates Telegram
+            </a>
+
+            <p>
+                Include:
+            </p>
+
+            <ul style="text-align:left; display:inline-block;">
+                <li>The nation or region involved</li>
+                <li>Your requested changes</li>
+                <li>Maps or screenshots if needed</li>
+                <li>Historical or lore information</li>
+            </ul>
+        </div>
+    </div>
+
 </div>
+
 <script>
 const data = {
     "The Oracandian Empire": "A virtually nonexistent state with no real authority, it is in constant chaos due to the various criminal organizations having way more authority than the central government on New Terra. This was the first state set up after human migrants departed the Milky Way, establishing the first foothold in Oracandia for humans. It collapsed after massive amounts of ethnic, religious, and political violence took place, causing many to depart the core to other parts of the galaxy.",
@@ -369,9 +422,29 @@ const data = {
     "Helrya": "Info not added, if wanted request in the request drop down.",
     "Lumyllphish": "Info not added, if wanted request in the request drop down.",
     "Sovern": "The original communist state in Oracandia, and ally of the Darikian Empire. It spread communism into Sector 3 to prevent the area from falling under fascist hands. They are made of 15 member republics, with the largest and most powerful being Sovern. Info not fully added, if wanted request in the request drop down.",
-    "Darikian Empire": "The original Devorist state. Info not fully added, if wanted request in the request drop down. Most info will be in the History tab.",
-    "Lijgysk": "A semi-democratic military dictatorship, enemy of the Darikian Empire, formed after the Darikian Civil War. Info not fully added, if wanted request in the request drop down.",
-    "Empire of the Rim": "Devorist state, puppet of the Darikian Empire, formed after the Darikian Civil War from Darikian remnants. Info not fully added, if wanted request in the request drop down.",
+    "Darikian Empire": `The modern Darikian Empire is the central successor state of the old Darikian imperial system and the heartland of Devorist rule.
+
+After the communist period, the Devorists seized power in a coordinated military coup against the weakened government. The new Emperor dissolved the communist state and restored the empire as a centralized, militarized, authoritarian power.
+
+For roughly one hundred years after the Devorist coup, the empire remained stable and expanded its military, industry, and internal security system. That stability ended when several generals in the Imperial War Council attempted to overthrow the government.
+
+The coup failed, but the rebel generals escaped into frontier territories and began the Darikian Civil War. After years of fighting, the war ended in the Three-State Solution: the Darikian Empire retained the imperial core, Lijgysk became independent, and the Empire of the Rim was created as a Darikian-aligned puppet state from separated Darikian territories.
+
+Today, the Darikian Empire remains a Devorist imperial state focused on unity, military strength, internal order, and preventing another civil collapse.`,
+    "Lijgysk": `Lijgysk was originally part of the Darikian Empire, not a separate state. Its people lived inside imperial territory for generations, but ethnic and regional tensions remained beneath the surface.
+
+During the Darikian Civil War, rebel generals from the Imperial War Council gained support from ethnic Lijgysk communities inside the empire. These communities saw the war as a chance to break away from Darikian rule and form their own state.
+
+When the war ended, the Three-State Solution recognized the Lijgysk-majority territories as an independent republic. This created the modern state of Lijgysk.
+
+Lijgysk is now a semi-democratic military dictatorship and one of the Darikian Empire's main enemies. Its existence permanently separates the Darikian imperial core from the Empire of the Rim.`,
+    "Empire of the Rim": `The Empire of the Rim was created after the Darikian Civil War as part of the Three-State Solution.
+
+When Lijgysk broke away from the Darikian Empire, some Darikian-majority territories were cut off from the imperial core. These isolated Darikian territories could no longer be directly governed from the capital because Lijgysk stood between them and the rest of the empire.
+
+Rather than abandon these territories, the Darikian government reorganized them into the Empire of the Rim. Officially, it functions as its own empire; in reality, it is a Darikian-aligned puppet state built from leftover Darikian populations and military remnants.
+
+The Empire of the Rim remains loyal to the Darikian Empire and acts as a frontier buffer, military outpost, and ideological extension of Devorist power beyond Lijgysk.`,
     "Concordia": "A monarchist hyper-militarist state and member of the Galactic Accord.",
     "Agis": "A monarchist state and member of the Galactic Accord.",
     "Habsart": "A monarchist state and leader of the Galactic Accord.",
